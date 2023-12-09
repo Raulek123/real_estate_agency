@@ -11,6 +11,7 @@ public class RealEstateAgencyApplication {
 
 		System.out.println("siema świat");
 		System.out.println("Nowy komit");
+		System.out.println("test");
 
 	}
 
