@@ -1,0 +1,37 @@
+Agencja nieruchomości
+
+Strona polega na możliwości przejrzenia oferty mieszkaniowej. Klient nie może bezpośrendio kupić
+mieszkania poprzez stronę - jeżeli jest zainteresowany, to może skontaktować się z agencją.
+Panel administratora - będzie można z tego poziomu dodawać mieszkania i ewentualnie jakieś słowniki (jeżeli będą potrzebne)
+Panel klienta - może zalogowac się na stronę i przeglądać dostępne mieszkania.
+Jeżeli mieszkanie zostało zakupione lub wynajęte, to administrator z poziomu panelu może ten fakt odnotować.
+W takim przypadku klient nie będzie widział już mieszkania na liście.
+
+Opcja rezerwacji - jeżeli klient jest zainteresowany, ale nie kupił jeszcze mieszkania, to ten fakt będzie odnotowany.
+Np. w ofercie jest to jakoś oznaczone, ale kto pierwszy ten lepszy. Jeżeli na jego miejsce znajdzie się jakaś osoba,
+która zapłaci za mieszkanie, to administracja odnotowuje fakt, że mieszkanie jest sprzedane lub wynajęte i pozycja znika z listy.
+
+Każde mieszkanie w serwisie posiada przypisany do niego pokoje. Przykładowo, mieszkanie X składa się z 4 pokojów,
+typu łazienka, kuchnia, salon, balkon.
+
+Mieszkanie posiada możliwość przypisania do niego zdjęć. Bez limitu, może być jedno, może być 20.
+
+
+
+-encja mieszkanie
+-klasa encji adres
+-enum z nazwą pokojów
+
+Must have:
+-panel administratora
+    -CRUD podstawowy do dodawania mieszkań + koniecznie zdjęcia
+    -autentykacja do panelu administratora (na koniec)
+-opcja przeglądania mieszkań bez zalogowania się
+
+Nice to have:
+
+
+Extras dla projektu
+-połączenie z fizyczną bazą danych (mysql/sql sever)
+-
+
