@@ -1,4 +1,4 @@
-package com.example.real_estate_agency;
+package pl.agency.real_estate_agency;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,5 +14,4 @@ public class RealEstateAgencyApplication {
 		System.out.println("test");
 
 	}
-
 }
