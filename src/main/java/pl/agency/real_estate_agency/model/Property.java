@@ -18,6 +18,9 @@ public class Property {
     private boolean basement;
     private String image;
 
+    @OneToOne
+    private Address address;
+
     @ElementCollection(targetClass = Rooms.class)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "property_rooms", joinColumns = @JoinColumn(name = "property_id"))
