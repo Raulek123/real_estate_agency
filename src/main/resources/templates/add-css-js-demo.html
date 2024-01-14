@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodanie CSS i JS do Thymeleafa</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/actions.js}"></script>
+</head>
+<body>
+<h2>Nagłówek testowy</h2>
+<button type="button" th:onclick="demo()">Show Alert</button>
+<br>
+<br>
+
+
+<div class="container">
+    <h2>Add Address</h2>
+    <form th:action="@{/addAddress}" method="post">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="address.city" required>
+
+        <label for="street">Street:</label>
+        <input type="text" id="street" name="address.street" required>
+
+        <label for="number">Number:</label>
+        <input type="text" id="number" name="address.number" required>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary">Add Address</button>
+    </form>
+</div>
+<br>
+
+<div class="container">
+    <h2>Create Property</h2>
+    <form th:action="@{/createProperty}" method="post" enctype="multipart/form-data">
+        <!-- Input fields for Property and Address -->
+        <label for="propertyDescription">Property Description:</label>
+        <input type="text" id="propertyDescription" name="property.description" required>
+
+        <label for="addressStreet">Address Street:</label>
+        <input type="text" id="addressStreet" name="address.street" required>
+
+        <label for="img">Select Images:</label>
+        <input type="file" id="img" name="img" multiple>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>

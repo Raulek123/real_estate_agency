@@ -27,10 +27,14 @@ public class PropertyService {
     private final AddressService addressService;
     private final ImagePathConfig imagePath;
 
+
     @Transactional
-    public void createOrUpdateProperty(Property property, Address address){
+    public void createOrUpdateProperty(Property property, Address address) {
+
+//        addressService.createOrUpdateAddress(address);
+
+        property.setAddress(address);
         propertyRepository.save(property);
-        addressService.createOrUpdateAddress(address);
     }
     @Transactional
     public Property getPropertyById(Long id) {

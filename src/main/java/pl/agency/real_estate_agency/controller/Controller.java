@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.agency.real_estate_agency.config.ImagePathConfig;
 import pl.agency.real_estate_agency.exception.RecordNotFoundException;
 import pl.agency.real_estate_agency.model.Address;
@@ -70,4 +71,47 @@ public class Controller {
         propertyService.deletePropertyById(id);
         return "redirect:/";
     }
+
+    @GetMapping("/createAddress")
+    public String showAddAddressForm(Model model) {
+        model.addAttribute("address", new Address());
+        return "addAddress";
+    }
+
+    @GetMapping("/createProperty")
+    public String showAddPropertyForm(Model model) {
+        model.addAttribute("property", new Property());
+        return "addProperty";
+    }
+
+//    @PostMapping("/createAddress")
+//    public String createAddress(@ModelAttribute Address address) {
+//        try {
+//            addressService.createOrUpdateAddress(address);
+//            return "redirect:/addressList";
+//        } catch (Exception e) {
+//            log.error("Error while creating address", e);
+//            return "redirect:/error";
+//        }
+//    }
+
+    @PostMapping("/createAddress")
+    public String createAddress(@ModelAttribute Address address, RedirectAttributes redirectAttributes) {
+        try {
+            addressService.createOrUpdateAddress(address);
+            log.debug("Address created successfully: " + address);
+            redirectAttributes.addFlashAttribute("successMessage", "Address created successfully");
+        } catch (Exception e) {
+            log.error("Error while creating address", e);
+            redirectAttributes.addFlashAttribute("errorMessage", "Error creating address");
+        }
+        return "redirect:/addressList";
+    }
+    @GetMapping("/addressList")
+    public String showAddressList(Model model) {
+        List<Address> addresses = addressService.getAllAddresses();
+        model.addAttribute("addresses", addresses);
+        return "addressList";
+    }
+
 }

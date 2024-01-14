@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Adresów</title>
+</head>
+<body>
+<h2>Lista Adresów</h2>
+
+
+<div th:if="${successMessage}" class="alert alert-success" role="alert">
+    <p th:text="${successMessage}"></p>
+</div>
+<div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Miasto</th>
+        <th>Ulica</th>
+        <th>Numer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="address : ${addresses}">
+        <td th:text="${address.id}"></td>
+        <td th:text="${address.city}"></td>
+        <td th:text="${address.street}"></td>
+        <td th:text="${address.number}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
