@@ -7,6 +7,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import pl.agency.real_estate_agency.config.ImagePathConfig;
+import pl.agency.real_estate_agency.exception.RecordNotFoundException;
+import pl.agency.real_estate_agency.model.Address;
 import pl.agency.real_estate_agency.model.Property;
 import pl.agency.real_estate_agency.repository.PropertyRepository;
 
@@ -16,16 +18,37 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class PropertyService {
     private final PropertyRepository propertyRepository;
+    private final AddressService addressService;
     private final ImagePathConfig imagePath;
 
     @Transactional
-    public void createOrUpdateProperty(Property property){
+    public void createOrUpdateProperty(Property property, Address address){
         propertyRepository.save(property);
+        addressService.createOrUpdateAddress(address);
+    }
+    @Transactional
+    public Property getPropertyById(Long id) {
+        return propertyRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("Property not found with id: " + id));
+    }
+    @Transactional
+    public List<Property> getAllProperties() {
+        return (List<Property>) propertyRepository.findAll();
+    }
+
+    @Transactional
+    public void deletePropertyById(Long id) {
+        Property property = propertyRepository.findById(id).orElse(null);
+        if(property != null){
+            Address address = property.getAddress();
+            addressService.deleteAddressById(address.getId());
+        }
+        propertyRepository.deleteById(id);
     }
 
 
