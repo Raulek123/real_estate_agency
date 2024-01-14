@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property List</title>
+</head>
+<body>
+
+<h1>Property List</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Floor</th>
+        <th>Price</th>
+        <!-- Dodaj więcej kolumn w zależności od potrzeb -->
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iteruj przez właściwości i wyświetl informacje -->
+    <tr th:each="property : ${properties}">
+        <td th:text="${property.id}"></td>
+        <td th:text="${property.floor}"></td>
+        <td th:text="${property.price}"></td>
+        <!-- Dodaj więcej kolumn w zależności od potrzeb -->
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -9,7 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Configuration
-@EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
 
     @Override
@@ -27,4 +26,7 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/" + directoryName + "/**")
                 .addResourceLocations("file:/" + uploadPath + "/");
     }
+
+
+
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Dodaj nagłówki, style CSS, skrypty JS, itp. -->
+</head>
+<body>
+<div class="container">
+    <h2>Create Property</h2>
+    <form th:action="@{/createProperty}" method="post" th:object="${property}" enctype="multipart/form-data">
+
+
+
+        <label for="floor">Piętro:</label>
+        <input type="text" id="floor" th:field="*{floor}" required>
+
+        <label for="price">Cena:</label>
+        <input type="text" id="price" th:field="*{price}" required>
+
+        <label for="basement">Piwnica:</label>
+        <input type="checkbox" id="basement" th:field="*{basement}">
+
+        <label for="image">Obraz:</label>
+        <input type="file" id="image" th:field="*{image}" multiple>
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>

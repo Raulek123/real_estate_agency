@@ -18,12 +18,12 @@ public class Property {
     private boolean basement;
     private String image;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @ElementCollection(targetClass = Rooms.class)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "property_rooms", joinColumns = @JoinColumn(name = "property_id"))
     private List<Rooms> rooms;
-
 }

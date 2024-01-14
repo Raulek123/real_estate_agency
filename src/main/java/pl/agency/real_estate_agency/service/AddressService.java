@@ -1,6 +1,7 @@
 package pl.agency.real_estate_agency.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.agency.real_estate_agency.exception.RecordNotFoundException;
@@ -13,6 +14,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AddressService {
+
+    @Autowired
     private AddressRepository addressRepository;
 
     @Transactional

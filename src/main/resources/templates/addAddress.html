@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Dodaj nagłówki, style CSS, skrypty JS, itp. -->
+</head>
+<body>
+<div class="container">
+    <h2>Create Address</h2>
+    <form th:action="@{/createAddress}" method="post" th:object="${address}">
+
+        <label for="city">City:</label>
+        <input type="text" id="city" th:field="*{city}" required>
+
+        <label for="street">Street:</label>
+        <input type="text" id="street" th:field="*{street}" required>
+
+        <label for="number">Number:</label>
+        <input type="number" id="number" th:field="*{number}" required>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
